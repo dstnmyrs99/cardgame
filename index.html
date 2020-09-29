@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>card game</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="playing-field">
+
+
+      <div class="player-side">
+        <div class="players-field">
+                <div class="phase"> Draw</div>
+          <div class="ac1 active-card empty"></div>
+          <div class="ac2 active-card empty"></div>
+          <div class="ac3 active-card empty"></div>
+          <div class="ac4 active-card empty"></div>
+          <div class="ac5 active-card empty"></div>
+        </div>
+        <div class="players-hand">
+          <div class="pH1 card no-card"><span class="cost"></span><span class="hp"></span><span class="power"></span></div>
+          <div class="pH2 card no-card"><span class="cost"></span><span class="hp"></span><span class="power"></span></div>
+          <div class="pH3 card no-card"><span class="cost"></span><span class="hp"></span><span class="power"></span></div>
+          <div class="pH4 card no-card"><span class="cost"></span><span class="hp"></span><span class="power"></span></div>
+          <div class="pH5 card no-card"><span class="cost"></span><span class="hp"></span><span class="power"></span></div>
+          <div class="pH6 card no-card"><span class="cost"></span><span class="hp"></span><span class="power"></span></div>
+          <div class="pH7 card no-card"><span class="cost"></span><span class="hp"></span><span class="power"></span></div>
+        </div>
+        <div class="player-health">HP: <span class="player-info" id="hp">20</span></div>
+        <div class="player-mana"><span class="player-info" id="mana">0</span>:Mana</div>
+        <div class="player-deck"></div>
+        <div class="skip"></div>
+      </div>
+
+
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="main.js" charset="utf-8"></script>
+        <script src="playersTurn.js" charset="utf-8"></script>
+  </body>
+</html>

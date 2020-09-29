@@ -1,0 +1,153 @@
+.playing-field{
+  margin: auto;
+  width: 1000px;
+  height: 700px;
+  border: solid 3px black;
+}
+.phase{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  font-size: 2em;
+}
+.player-side{
+  position: relative;
+  top: 50%;
+  background-color: gray;
+  height: 50%;
+}
+.active-card{
+  height: 100px;
+  width: 75px;
+  /* border: 2px solid black; */
+}
+.highlite{
+  box-shadow: 0 0 3px gold;
+}
+.not-enough-mana{
+  box-shadow: 0 0 3px red;
+}
+.ac1{
+  position: absolute;
+  left: 230px;
+  bottom: 175px;
+}
+.ac2{
+  position: absolute;
+  left: 352px;
+  bottom: 175px;
+}
+.ac3{
+  position: absolute;
+  left: 473px;
+  bottom: 175px;
+}
+.ac4{
+  position: absolute;
+  left: 594px;
+  bottom: 175px;
+}
+.ac5{
+  position: absolute;
+  left: 715px;
+  bottom: 175px;
+}
+.player-deck{
+  position: absolute;
+  background-color: blue;
+  bottom: 65px;
+  right: 25px;
+  height: 100px;
+  width: 75px;
+  border: 2px solid black;
+  box-shadow: 1px 1px black, 2px 2px black, 3px 3px black, 4px 4px black,
+  5px 5px black, 6px 6px black;
+}
+.skip{
+  position: absolute;
+  bottom: 175px;
+  right: 65px;
+  transform: translate(50%, 0);
+  background-color: crimson;
+}
+.skip:hover{
+  background-color: red;
+  box-shadow: 0 0 5px red;
+}
+.player-info{
+  font-size: 3em;
+}
+.player-health{
+  position: absolute;
+  bottom: 5px;
+  left:  5px;
+}
+.player-mana{
+  position: absolute;
+  bottom: 5px;
+  right:  5px;
+}
+.card{
+  height: 100px;
+  width: 75px;
+  border: 2px solid black;
+  background-color: cyan;
+}
+.cost{
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+.hp{
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+.power{
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+.card:not(.no-card):hover{
+  box-shadow: 0 0 10px black;
+}
+/* Players Hand */
+.pH1{
+position: absolute;
+left: 200px;
+bottom: 25px;
+}
+.pH2{
+position: absolute;
+left: 290px;
+bottom: 25px;
+}
+.pH3{
+position: absolute;
+left: 380px;
+bottom: 25px;
+}
+.pH4{
+position: absolute;
+left: 470px;
+bottom: 25px;
+}
+.pH5{
+position: absolute;
+left: 560px;
+bottom: 25px;
+}
+.pH6{
+position: absolute;
+left: 650px;
+bottom: 25px;
+}
+.pH7{
+position: absolute;
+left: 740px;
+bottom: 25px;
+}
+.no-card{
+background-color: gray;
+border: none;
+}
