@@ -1,5 +1,6 @@
 
 let deck = [];
+let cpuDeck = [];
 playingFromHand = false;
 
 
@@ -13,13 +14,15 @@ class Card {
 
 function createDeck(){
   for(i=0;i<25;i++){
-    deck.push(new Card(Math.floor((i/5)+(Math.random()*3)+1)));
-    deck.sort( () => Math.random() - 0.5);
+    deck.push(new Card(Math.floor((i/8)+(Math.random()*3)+1)));
+    cpuDeck.push(new Card(Math.floor((i/8)+(Math.random()*3)+1)));
   }
+    deck.sort( () => Math.random() - 0.5);
+    cpuDeck.sort( () => Math.random() - 0.5);
 }
 $(document).ready( ()=>{
 createDeck();
 initialDraw();
 //playCards();
-draw();
+drawPhase();
 })

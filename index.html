@@ -7,11 +7,22 @@
   </head>
   <body>
     <div class="playing-field">
+      <div class="cpu-side">
+        <div class="phase"> Draw</div>
+        <div class="cpu-field">
+          <div class="cpu-health">HP <span class="info" id="cpu-hp">20</span></div>
+          <div class="cpu-mana"><span class="info" id="cpu-mana">0</span><span id="cpu-max-mana">/0</span> Mana</div>
+          <div class="cpu1 cpu-card cpu-no-card"><span class="cost"></span><span class="hp"></span><span class="power"></div>
+          <div class="cpu2 cpu-card cpu-no-card"><span class="cost"></span><span class="hp"></span><span class="power"></div>
+          <div class="cpu3 cpu-card cpu-no-card"><span class="cost"></span><span class="hp"></span><span class="power"></div>
+          <div class="cpu4 cpu-card cpu-no-card"><span class="cost"></span><span class="hp"></span><span class="power"></div>
+          <div class="cpu5 cpu-card cpu-no-card"><span class="cost"></span><span class="hp"></span><span class="power"></div>
+        </div>
 
+      </div>
 
       <div class="player-side">
         <div class="players-field">
-                <div class="phase"> Draw</div>
           <div class="ac1 active-card empty"></div>
           <div class="ac2 active-card empty"></div>
           <div class="ac3 active-card empty"></div>
@@ -27,8 +38,8 @@
           <div class="pH6 card no-card"><span class="cost"></span><span class="hp"></span><span class="power"></span></div>
           <div class="pH7 card no-card"><span class="cost"></span><span class="hp"></span><span class="power"></span></div>
         </div>
-        <div class="player-health">HP: <span class="player-info" id="hp">20</span></div>
-        <div class="player-mana"><span class="player-info" id="mana">0</span>:Mana</div>
+        <div class="player-health">HP <span class="info" id="hp">20</span></div>
+        <div class="player-mana"><span class="info" id="mana">0</span><span id="max-mana">/0</span> Mana</div>
         <div class="player-deck"></div>
         <div class="skip"></div>
       </div>
@@ -38,6 +49,7 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="main.js" charset="utf-8"></script>
-        <script src="playersTurn.js" charset="utf-8"></script>
+    <script src="cpuTurn.js" charset="utf-8"></script>
+    <script src="playersTurn.js" charset="utf-8"></script>
   </body>
 </html>

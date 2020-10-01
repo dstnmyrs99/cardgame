@@ -12,20 +12,25 @@
 }
 .player-side{
   position: relative;
-  top: 50%;
+  /* top: 50%; */
   background-color: gray;
-  height: 50%;
+  height: 350px;
+}
+.cpu-side{
+  position: relative;
+  top: 0;
+  background-color: gray;
+  height: 350px;
 }
 .active-card{
   height: 100px;
   width: 75px;
-  /* border: 2px solid black; */
 }
 .highlite{
   box-shadow: 0 0 3px gold;
 }
 .not-enough-mana{
-  box-shadow: 0 0 3px red;
+  box-shadow: 0 0 10px red;
 }
 .ac1{
   position: absolute;
@@ -74,7 +79,7 @@
   background-color: red;
   box-shadow: 0 0 5px red;
 }
-.player-info{
+.info{
   font-size: 3em;
 }
 .player-health{
@@ -87,7 +92,17 @@
   bottom: 5px;
   right:  5px;
 }
-.card{
+.cpu-health{
+  position: absolute;
+  top: 5px;
+  left:  5px;
+}
+.cpu-mana{
+  position: absolute;
+  top: 5px;
+  right:  5px;
+}
+.card, .cpu-card{
   height: 100px;
   width: 75px;
   border: 2px solid black;
@@ -108,7 +123,7 @@
   bottom: 5px;
   right: 5px;
 }
-.card:not(.no-card):hover{
+.card:not(.no-card):hover, .cpu-card:not(.cpu-no-card):hover{
   box-shadow: 0 0 10px black;
 }
 /* Players Hand */
@@ -147,7 +162,32 @@ position: absolute;
 left: 740px;
 bottom: 25px;
 }
-.no-card{
+.no-card, .cpu-no-card{
 background-color: gray;
 border: none;
+}
+.cpu1{
+  position: absolute;
+  left: 230px;
+  bottom: 60px;
+}
+.cpu2{
+  position: absolute;
+  left: 352px;
+  bottom: 60px;
+}
+.cpu3{
+  position: absolute;
+  left: 473px;
+  bottom: 60px;
+}
+.cpu4{
+  position: absolute;
+  left: 594px;
+  bottom: 60px;
+}
+.cpu5{
+  position: absolute;
+  left: 715px;
+  bottom: 60px;
 }

@@ -1,69 +1,55 @@
-let mana = parseInt($("#mana").text());
+let maxMana = parseInt($("#mana").text());
+let mana = maxMana;
 let hp = parseInt($("#hp").text());
+let discarding = false;
 
 function initialDraw(){
-$(".player-side .no-card").each( (index, element)=> {
+$(".no-card:lt(5)").each( (index, element)=> {
   $(element).removeClass("no-card");
   $(element).find(".cost").text(deck[0].cost)
   $(element).find(".hp").text(deck[0].hp)
   $(element).find(".power").text(deck[0].power);
   deck.shift();
 })
+  for(let i=0; i<5;i++){
+    cpuHand[i] = cpuDeck[i]
+    cpuDeck.splice(0,1);
+  }
 }
 
-function draw(){
-  console.log($(".no-card")[0]);
+function drawPhase(){
+  $(".skip").off().text('Skip').on('click', playCardsPhase);
   $(".phase").text("Draw");
-  mana ++;
+  maxMana ++;
+  mana =maxMana;
+  $(".empty").removeClass('highlite').removeClass('not-enough-mana').off();
   $("#mana").text(mana);
-  $('.card:not(.no-card)').off().on('click', (e) => {
-    console.log($(e.target));
-    $(".skip").off().text('Discard').on('click', () =>{discard($(e.target))});
-  });
-  $(".skip").off().text('Skip').on('click', playCards);
-  $('.player-deck').on('click', ()=>{
-  if($(".no-card")[0]){
-    $(".no-card").first().find(".cost").text(deck[0].cost)
-    $(".no-card").first().find(".hp").text(deck[0].hp)
-    $(".no-card").first().find(".power").text(deck[0].power);
-    $(".no-card").first().removeClass("no-card");
-    deck.shift();
-    playCards();
-  }
+  $("#max-mana").text('/' + maxMana);
+  $('.player-deck').on('click', draw);
+  $('.card:not(.no-card)').off().each((ind, ele) =>{
+      $(ele).on('click', (e) => {
+  if(!discarding){
+      discarding =true;
+      $(e.target).addClass('not-enough-mana');
+      $(".skip").off().text('Discard').on('click', () =>{discard($(e.target))});
+      return
+}else{
+  discarding = false;
+      $('.card').removeClass('not-enough-mana');
+      $(".skip").off().text('Skip').on('click', playCardsPhase);
+}
+  //$(".skip").off().text('Skip').on('click', playCardsPhase);
+
+})
 })
 }
-function playCards(){
+function playCardsPhase(){
+  $(".no-card").off().removeClass("not-enough-mana");
     $(".phase").text("Play Cards");
-  $(".skip").off().text('End Phase').on('click', draw);
+  $(".skip").off().text('End Phase').on('click', cpuTurn);
   $(".player-deck").off();
-  $('.card:not(.no-card)').off().each((index, element) =>{
-  $(element).on('click', () => {
-    if(playingFromHand){
-      $(".empty").removeClass('highlite').removeClass('not-enough-mana').off();
-      playingFromHand = false;
-      return
-    }else{
-      playingFromHand = true;
-      console.log($(element).find('.cost').text());
-      if(parseInt($(element).find('.cost').text()) <= mana){
-        $(".empty").addClass('highlite');
-        $(".empty").click((e) =>{
-          mana -= parseInt($(element).find('.cost').text());
-          $("#mana").text(mana);
-          $(e.target).html($(element).html()).addClass('card');
-          $(".empty").removeClass('highlite').off();
-          $(element).addClass("no-card").off();
-          $(element).find(".cost").text('')
-          $(element).find(".hp").text('')
-          $(element).find(".power").text('');
-          playingFromHand = false;
-        })
-    }else{
-      $(".empty").addClass('not-enough-mana');
-      console.log('not good');
-    }
-  }
-    })
+  $('.card:not(.no-card)').removeClass('not-enough-mana').off().each((index, element) =>{
+  $(element).click({param1: element}, playCard);
   })
 }
 
@@ -72,5 +58,48 @@ function discard(card){
   $(card).find(".cost").text('')
   $(card).find(".hp").text('')
   $(card).find(".power").text('');
-  $(".skip").off().text('Skip').on('click', playCards);
+  $(".skip").off().text('Skip').on('click', cpuTurn);
+  $('.no-card').removeClass('not-enough-mana').off();
+  discarding = false;
+}
+
+function draw(){
+  console.log('should be drawing');
+  if($(".no-card")[0]){
+    let newCard = $(".no-card")[0]
+    $(newCard).find(".cost").text(deck[0].cost)
+    $(newCard).find(".hp").text(deck[0].hp)
+    $(newCard).find(".power").text(deck[0].power);
+    $(newCard).removeClass("no-card");
+    deck.shift();
+    playCardsPhase();
+  }
+}
+
+function playCard(param){
+    element = param.data.param1;
+    if(playingFromHand){
+      $(".empty").removeClass('highlite').removeClass('not-enough-mana').off();
+      playingFromHand = false;
+      //return
+    }else{
+      playingFromHand = true;
+      console.log($(element).find('.cost').text());
+      if(parseInt($(element).find('.cost').text()) <= mana){
+        $(".empty").addClass('highlite').click((e) =>{
+          mana -= parseInt($(element).find('.cost').text());
+          $("#mana").text(mana);
+          $(e.target).html($(element).html()).addClass('card');
+          $(".empty").removeClass('highlite').off();
+          $(element).addClass("no-card").off();
+          $(element).find(".cost").text('');
+          $(element).find(".hp").text('');
+          $(element).find(".power").text('');
+          playingFromHand = false;
+        })
+    }else{
+      $(".empty").addClass('not-enough-mana');
+      console.log('not good');
+    }
+  }
 }
