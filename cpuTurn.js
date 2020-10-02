@@ -27,10 +27,8 @@ function cpuDrawCards(){
 }
 
 function cpuPlayCards(){
-  console.log($(".cpu-no-card")[0]);
   if($(".cpu-no-card")[0]){
   cpuHand.forEach((card) => {
-    console.log(card);
     if(card.cost <= cpuMana){
       let cpuCard = $(".cpu-no-card")[0];
       $(cpuCard).find(".cost").text(card.cost);

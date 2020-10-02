@@ -18,15 +18,16 @@ $(".no-card:lt(5)").each( (index, element)=> {
 }
 
 function drawPhase(){
-  $(".skip").off().text('Skip').on('click', playCardsPhase);
+  $("div").off();
+  $(".skip").text('Skip').on('click', playCardsPhase);
   $(".phase").text("Draw");
   maxMana ++;
   mana =maxMana;
-  $(".empty").removeClass('highlite').removeClass('not-enough-mana').off();
+  $(".empty").removeClass('highlite').removeClass('not-enough-mana');
   $("#mana").text(mana);
   $("#max-mana").text('/' + maxMana);
   $('.player-deck').on('click', draw);
-  $('.card:not(.no-card)').off().each((ind, ele) =>{
+  $('.card:not(.no-card)').each((ind, ele) =>{
       $(ele).on('click', (e) => {
   if(!discarding){
       discarding =true;
@@ -38,17 +39,16 @@ function drawPhase(){
       $('.card').removeClass('not-enough-mana');
       $(".skip").off().text('Skip').on('click', playCardsPhase);
 }
-  //$(".skip").off().text('Skip').on('click', playCardsPhase);
 
 })
 })
 }
 function playCardsPhase(){
-  $(".no-card").off().removeClass("not-enough-mana");
+  $("div").off();
+  $(".no-card").removeClass("not-enough-mana");
     $(".phase").text("Play Cards");
-  $(".skip").off().text('End Phase').on('click', cpuTurn);
-  $(".player-deck").off();
-  $('.card:not(.no-card)').removeClass('not-enough-mana').off().each((index, element) =>{
+  $(".skip").text('Battle Phase').on('click', battlePhase);
+  $('.card:not(.no-card)').removeClass('not-enough-mana').each((index, element) =>{
   $(element).click({param1: element}, playCard);
   })
 }
@@ -64,7 +64,6 @@ function discard(card){
 }
 
 function draw(){
-  console.log('should be drawing');
   if($(".no-card")[0]){
     let newCard = $(".no-card")[0]
     $(newCard).find(".cost").text(deck[0].cost)
@@ -84,13 +83,12 @@ function playCard(param){
       //return
     }else{
       playingFromHand = true;
-      console.log($(element).find('.cost').text());
       if(parseInt($(element).find('.cost').text()) <= mana){
         $(".empty").addClass('highlite').click((e) =>{
           mana -= parseInt($(element).find('.cost').text());
           $("#mana").text(mana);
-          $(e.target).html($(element).html()).addClass('card');
           $(".empty").removeClass('highlite').off();
+          $(e.target).html($(element).html()).addClass('active-card').removeClass("empty");
           $(element).addClass("no-card").off();
           $(element).find(".cost").text('');
           $(element).find(".hp").text('');
@@ -99,7 +97,6 @@ function playCard(param){
         })
     }else{
       $(".empty").addClass('not-enough-mana');
-      console.log('not good');
     }
   }
 }

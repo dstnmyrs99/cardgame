@@ -9,6 +9,7 @@
   top: 0;
   left: 50%;
   font-size: 2em;
+  transform: translate(-50%, 0);
 }
 .player-side{
   position: relative;
@@ -25,6 +26,10 @@
 .active-card{
   height: 100px;
   width: 75px;
+}
+.active-card:not(.empty){
+  border: 2px solid black;
+  background-color: cyan;
 }
 .highlite{
   box-shadow: 0 0 3px gold;
@@ -123,7 +128,7 @@
   bottom: 5px;
   right: 5px;
 }
-.card:not(.no-card):hover, .cpu-card:not(.cpu-no-card):hover{
+.card:not(.no-card):hover, .cpu-card:not(.cpu-no-card):hover, .active-card:not(.empty):hover{
   box-shadow: 0 0 10px black;
 }
 /* Players Hand */
@@ -190,4 +195,7 @@ border: none;
   position: absolute;
   left: 715px;
   bottom: 60px;
+}
+span{
+  pointer-events: none;
 }
