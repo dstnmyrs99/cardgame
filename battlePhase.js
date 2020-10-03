@@ -10,15 +10,17 @@ function battlePhase(){
         battling = false;
         $(".cpu-card").removeClass('highlite').off();
       }else{
+        if(!$(elem).hasClass("just-played")){
           battling = true;
           $(".cpu-card").addClass('highlite').on("click", (e) =>{
             battle(elem, e.target);
-          })
+            })
+          }
         }
       })
     })
   }
-function battle(attacker, defender, who){
+function battle(attacker, defender){
   let attack = $(attacker).find('.power').text();
   let defend = $(defender).find(".hp").text();
   if(attack >= defend){
@@ -27,17 +29,21 @@ function battle(attacker, defender, who){
       $(defender).find(".hp").text('');
       $(defender).find(".power").text('');
       $(attacker).off();
-      if(who = 'player'){
-        cpuHp += (defend - attack);
-        $("#cpu-hp").text(cpuHp);
-      }else{
-        hp += (defend - attack);
-        $("#hp").text(hp);
-      }
+      cpuHp += (defend - attack);
+      $("#cpu-hp").text(cpuHp);
   }else{
       $(defender).find(".hp").text(defend - attack);
       $(attacker).off();
   }
   $(".cpu-card").removeClass('highlite').off();
   battling = false;
+  if(cpuHp <= 0){
+    alert('You Win');
+    location.reload();
+  }else if(hp <= 0){
+    alert('You Lose');
+    location.reload();
+  }else{
+
+  }
 }

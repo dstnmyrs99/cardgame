@@ -26,6 +26,7 @@
 .active-card{
   height: 100px;
   width: 75px;
+
 }
 .active-card:not(.empty){
   border: 2px solid black;
@@ -198,4 +199,7 @@ border: none;
 }
 span{
   pointer-events: none;
+}
+.damaged{
+  box-shadow: 0 0 15px red;
 }

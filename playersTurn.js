@@ -18,7 +18,7 @@ $(".no-card:lt(5)").each( (index, element)=> {
 }
 
 function drawPhase(){
-  $("div").off();
+  $("div").off().removeClass('just-played');
   $(".skip").text('Skip').on('click', playCardsPhase);
   $(".phase").text("Draw");
   maxMana ++;
@@ -88,7 +88,7 @@ function playCard(param){
           mana -= parseInt($(element).find('.cost').text());
           $("#mana").text(mana);
           $(".empty").removeClass('highlite').off();
-          $(e.target).html($(element).html()).addClass('active-card').removeClass("empty");
+          $(e.target).html($(element).html()).addClass('active-card just-played').removeClass("empty");
           $(element).addClass("no-card").off();
           $(element).find(".cost").text('');
           $(element).find(".hp").text('');
