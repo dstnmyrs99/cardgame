@@ -18,6 +18,10 @@ $(".no-card:lt(5)").each( (index, element)=> {
 }
 
 function drawPhase(){
+  if(deck.length == 0){
+    alert("you have no cards to play. You lose");
+    location.reload();
+  }
   $("div").off().removeClass('just-played');
   $(".skip").text('Skip').on('click', playCardsPhase);
   $(".phase").text("Draw");
