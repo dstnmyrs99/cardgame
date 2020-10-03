@@ -64,6 +64,9 @@ function cpuBattle(attacker, num){
     defender = $(`.ac${num}`);
     let def = $(defender).find('.hp').text()
     let att = $(attacker).find('.power').text()
+    let attackDef = $(attacker).find('.hp').text();
+    let defendPow = $(defender).find(".power").text();
+
     $(attacker).addClass('highlite');
     $(defender).addClass('damaged');
     setTimeout(function(){
@@ -71,14 +74,43 @@ function cpuBattle(attacker, num){
       $(defender).removeClass('damaged');
     }, 1000);
 
+    if(def === ''){
+      hp += (def - att);
+      $("#hp").text(hp);
+    }
+
     if(att >= def){
+      if(defendPow >= attackDef){
+        $(attacker).addClass("cpu-no-card").off();
+        $(attacker).find(".cost").text('');
+        $(attacker).find(".hp").text('');
+        $(attacker).find(".power").text('');
+      }else{
+        $(attacker).find(".hp").text(attackDef - defendPow);
+      }
         $(defender).addClass("empty").off();
         $(defender).find(".cost").text('');
         $(defender).find(".hp").text('');
         $(defender).find(".power").text('');
-        hp += (def - att);
-        $("#hp").text(hp);
+
     }else{
+      if(defendPow >= attackDef){
+        $(attacker).addClass("cpu-no-card").off();
+        $(attacker).find(".cost").text('');
+        $(attacker).find(".hp").text('');
+        $(attacker).find(".power").text('');
+      }else{
+        $(attacker).find(".hp").text(attackDef - defendPow);
+      }
         $(defender).find(".hp").text(def - att);
+    }
+    if(cpuHp <= 0){
+      alert('You Win');
+      location.reload();
+    }else if(hp <= 0){
+      alert('You Lose');
+      location.reload();
+    }else{
+
     }
 }

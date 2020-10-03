@@ -23,15 +23,37 @@ function battlePhase(){
 function battle(attacker, defender){
   let attack = $(attacker).find('.power').text();
   let defend = $(defender).find(".hp").text();
+  let attackDef = $(attacker).find('.hp').text();
+  let defendPow = $(defender).find(".power").text();
+
+  if(defend === ''){
+    console.log('direct hit');
+    cpuHp += (defend - attack);
+    $("#cpu-hp").text(cpuHp);
+  }
   if(attack >= defend){
+    if(defendPow >= attackDef){
+      $(attacker).addClass("empty").off();
+      $(attacker).find(".cost").text('');
+      $(attacker).find(".hp").text('');
+      $(attacker).find(".power").text('');
+    }else{
+      $(attacker).find(".hp").text(attackDef - defendPow);
+    }
       $(defender).addClass("cpu-no-card").off();
       $(defender).find(".cost").text('');
       $(defender).find(".hp").text('');
       $(defender).find(".power").text('');
       $(attacker).off();
-      cpuHp += (defend - attack);
-      $("#cpu-hp").text(cpuHp);
   }else{
+    if(defendPow >= attackDef){
+      $(attacker).addClass("empty").off();
+      $(attacker).find(".cost").text('');
+      $(attacker).find(".hp").text('');
+      $(attacker).find(".power").text('');
+    }else{
+      $(attacker).find(".hp").text(attackDef - defendPow);
+    }
       $(defender).find(".hp").text(defend - attack);
       $(attacker).off();
   }
