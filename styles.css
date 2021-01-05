@@ -6,7 +6,7 @@
 }
 .phase{
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 50%;
   font-size: 2em;
   transform: translate(-50%, 0);
@@ -35,6 +35,7 @@
 .highlite{
   box-shadow: 0 0 3px gold;
 }
+
 .not-enough-mana{
   box-shadow: 0 0 10px red;
 }
@@ -76,10 +77,11 @@
 }
 .skip{
   position: absolute;
-  bottom: 175px;
-  right: 65px;
+  top: 0px;
+  right: 50%;
   transform: translate(50%, 0);
   background-color: crimson;
+  border: 2px solid black;
 }
 .skip:hover{
   background-color: red;
