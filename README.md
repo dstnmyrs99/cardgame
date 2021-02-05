@@ -17,4 +17,7 @@ During the battle phase click on a card in your field and then click a space in 
 The number in the bottom left of a card is its HP, bottom right number is it's attack power  
 If you attack an empty spot it will do direct damage to the CPU  
 Remember you can't attack with a card on the same turn it was played
-If you can't attack anymore press the red CPU turn buttton to end your turn
+If you can't attack anymore press the red CPU turn buttton to end your turn  
+  
+    
+    [Check-it-out](https://dstnmyrs99.github.io/cardgame/) 
