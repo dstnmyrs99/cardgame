@@ -20,4 +20,4 @@ Remember you can't attack with a card on the same turn it was played
 If you can't attack anymore press the red CPU turn buttton to end your turn  
   
     
-    [Check-it-out](https://dstnmyrs99.github.io/cardgame/) 
+[Check-it-out](https://dstnmyrs99.github.io/cardgame) 
